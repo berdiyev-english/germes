@@ -1,5 +1,5 @@
 // Define a cache name, versioning helps manage updates later
-const CACHE_NAME = 'my-pwa-cache-v1';
+const CACHE_NAME = 'my-pwa-cache-v2';
 
 // List of assets to cache during installation
 // Be careful with dynamic URLs like those with '?t=' in Tilda.
