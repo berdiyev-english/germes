@@ -246,22 +246,22 @@ function smartRedirect(searchQuery) {
   // 2. Быстрое перенаправление на категорию, если есть только название товара (без фильтров)
   const categories = [
     { kws: ['стиральная машина', 'стиралка'], url: 'https://germes.cc/krupnaja-bytovaja/stiral-nye-mashiny' },
-    { kws: ['холодильник'], url: 'https://germes.cc/krupnaja-bytovaja/holodil-niki' },
+    { kws: ['холодильник', 'холодос'], url: 'https://germes.cc/krupnaja-bytovaja/holodil-niki' },
     { kws: ['сушильная машина', 'сушилка'], url: 'https://germes.cc/krupnaja-bytovaja/sushilnie-mashini' },
-    { kws: ['плита', 'кухонная плита'], url: 'https://germes.cc/krupnaja-bytovaja/stove' },
+    { kws: ['плита', 'кухонная плита', 'плитка'], url: 'https://germes.cc/krupnaja-bytovaja/stove' },
     { kws: ['электропечь'], url: 'https://germes.cc/krupnaja-bytovaja/electropechi' },
     { kws: ['духовка'], url: 'https://germes.cc/vstraivaemaja-tehnika/duchovki' },
     { kws: ['вытяжка'], url: 'https://germes.cc/vstraivaemaja-tehnika/vitagki' },
     { kws: ['посудомоечная машина', 'посудомойка'], url: 'https://germes.cc/vstraivaemaja-tehnika/dishwasher' },
     { kws: ['микроволновка', 'микроволновая печь'], url: 'https://germes.cc/vstraivaemaja-tehnika/microwave' },
-    { kws: ['варочная поверхность'], url: 'https://germes.cc/vstraivaemaja-tehnika/varochnie-poverhnosti' },
+    { kws: ['варочная поверхность', 'варка'], url: 'https://germes.cc/vstraivaemaja-tehnika/varochnie-poverhnosti' },
     { kws: ['мойка', 'кухонная мойка'], url: 'https://germes.cc/for-kitchen/kuhonnye-mojki' },
     { kws: ['смеситель'], url: 'https://germes.cc/for-kitchen/smesiteli-dlja-kuhni' },
     { kws: ['аксессуар'], url: 'https://germes.cc/for-kitchen/aksessuary' },
-    { kws: ['кондиционер'], url: 'https://germes.cc/for-home/klimat' },
+    { kws: ['кондиционер', 'кондей'], url: 'https://germes.cc/for-home/klimat' },
     { kws: ['кофемашина', 'чайник'], url: 'https://germes.cc/for-home/house-hold' },
     { kws: ['пылесос'], url: 'https://germes.cc/for-home/pilesosi' },
-    { kws: ['телевизор'], url: 'https://germes.cc/for-home/tv' },
+    { kws: ['телевизор', 'телек', 'Телек', 'ящик', 'тв', 'ТВ'], url: 'https://germes.cc/for-home/tv' },
   ];
 
   // Поиск подходящей категории без фильтров
