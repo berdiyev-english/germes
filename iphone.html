@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Germes-Бытовая техника</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="/orbita/manifest.json">
+  <meta name="theme-color" content="#FFFFFF">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Пermes-юытовая техника">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="apple-touch-icon" href="/germes/icon-192.png">
+  <style>
+    body { font-family: sans-serif; line-height: 1.6; color: #333;}
+    #main-block {
+      max-width:400px; margin:40px auto; padding:30px;
+      border:1px solid #ddd; border-radius:7px; box-shadow:0 0 20px #eee;
+      text-align:center;
+    }
+    #install-instruction h3 {
+      color:#1a7dec; margin-top: 25px; margin-bottom: 10px; font-size: 20px;
+    }
+    #install-instruction ul {
+      list-style: none; /* Убираем стандартные маркеры списка */
+      padding: 0;
+      text-align: left;
+    }
+    #install-instruction li {
+      margin-bottom: 15px;
+      padding-left: 0; /* Убираем отступ для маркеров */
+    }
+    #install-instruction img.icon {
+      vertical-align: middle;
+      width: 24px; /* Размер иконок */
+      height: 24px;
+      margin-right: 8px;
+    }
+
+    button, a.btn { background:#1a7dec; color:#fff; border:none; border-radius:5px; font-size:18px; padding:10px 32px;
+      margin-top:18px; margin-bottom:8px; text-decoration:none; display:inline-block;
+    }
+    button:hover, a.btn:hover { background:#0955e0;}
+
+    /* CSS АНИМАЦИЯ ДЛЯ ЛОГОТИПА */
+    @keyframes pulse-logo {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.8; } /* Увеличивается немного и становится прозрачнее */
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .animated-logo {
+      animation: pulse-logo 1.5s infinite ease-in-out; /* 1.5 секунды, бесконечно, плавно */
+    }
+  </style>
+</head>
+<body>
+  <div id="main-block">
+    <div id="pwa-check"></div>
+    <a id="go-app-btn" class="btn" style="display:none;" href="https://berdiyev-english.github.io/germes/index.html">Перейти в приложение</a>
+  </div>
+
+  <script>
+  function isPwa() {
+    return (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone;
+  }
+
+  window.addEventListener('DOMContentLoaded', function() {
+    const pwaCheck = document.getElementById('pwa-check');
+    const goBtn = document.getElementById('go-app-btn');
+
+    if (isPwa()) {
+      goBtn.style.display = "none";
+      pwaCheck.innerHTML = `
+        <img src="/germes/icon-192.png" alt="Загрузка..." class="animated-logo" style="width:180px;height:auto;display:block;margin:0 auto;">
+        <div style="margin-top:10px;">Открытие приложения…</div>
+      `;
+      setTimeout(function() {
+        window.location.href = "https://berdiyev-english.github.io/germes/index.html";
+      }, 1200); // 1.2 секунды
+    } else {
+      pwaCheck.innerHTML = `
+        <div id="install-instruction">
+          <h2>Установите приложение для удобного доступа!</h2>
+          <p>Чтобы пользоваться приложением без браузера и с быстрым доступом, добавьте его на главный экран:</p>
+
+          <h3>Для Android (Google Chrome):</h3>
+          <ul>
+            <li>
+              Нажмите на <img src="https://cdn-icons-png.flaticon.com/512/13/13770.png" alt="Иконка меню Chrome" class="icon"> <b>иконку меню</b> (три точки или три полоски) в правом верхнем углу браузера.
+            </li>
+            <li>
+              В появившемся меню выберите пункт <b>«Установить приложение»</b> или <b>«Добавить на главный экран»</b>.
+            </li>
+            <li>
+              Подтвердите установку, нажав <b>«Установить»</b>.
+            </li>
+          </ul>
+
+          <h3>Для iPhone/iPad (Safari):</h3>
+          <ul>
+            <li>
+              Нажмите на <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/IOS_Share_icon.png/24px-IOS_Share_icon.png" alt="Иконка Поделиться Safari" class="icon"> <b>иконку «Поделиться»</b> (квадрат со стрелкой вверх) в нижней части экрана.
+            </li>
+            <li>
+              В появившемся меню прокрутите вниз и выберите <b>«На экран «Домой»</b>.
+            </li>
+            <li>
+              Подтвердите, нажав <b>«Добавить»</b> в правом верхнем углу.
+            </li>
+          </ul>
+        </div>
+        <div style="color:#888;font-size:13px;margin-top:20px;">* Желаем вам приятных покупок</div>
+      `;
+      goBtn.style.display = "inline-block";
+    }
+  });
+
+  // Регистрация service-worker для PWA [ОПЦИОНАЛЬНО]
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/germes/service-worker.js');
+    });
+  }
+  </script>
+</body>
+</html>
